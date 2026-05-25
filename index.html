@@ -8,6 +8,82 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="game-container">
+
+  <aside class="sidebar">
+
+    <h1>Tűzhegy</h1>
+
+    <div class="hero-header">
+
+      <h2>Hős</h2>
+
+      <label class="godmode-switch">
+
+        <input type="checkbox" id="godModeToggle">
+
+        <span class="slider"></span>
+
+      </label>
+
+    </div>
+
+    <div class="godmode-text" id="godModeStatus">
+      God Mode: KI
+    </div>
+
+    <div class="stat">
+      <span>Ügyesség</span>
+      <strong id="skill">0</strong>
+    </div>
+
+    <div class="stat">
+      <span>Életerő</span>
+      <strong id="health">0</strong>
+    </div>
+
+    <div class="health-bar">
+      <div class="health-fill" id="healthFill"></div>
+    </div>
+
+    <div class="stat">
+      <span>Szerencse</span>
+      <strong id="luck">0</strong>
+    </div>
+
+    <div class="stat">
+      <span>Arany</span>
+      <strong id="gold">0</strong>
+    </div>
+
+    <div class="stat">
+      <span>Élelem</span>
+      <strong id="food">0</strong>
+    </div>
+
+    <h3>Felszerelés</h3>
+
+    <ul id="inventory"></ul>
+
+    <div class="controls">
+
+      <button id="saveBtn">
+        Mentés
+      </button>
+
+      <button id="loadBtn">
+        Betöltés
+      </button>
+
+      <button id="restartBtn">
+        Újrakezdés
+      </button>
+
+    </div>
+
+  </aside>
+
   <main class="main-content">
 
     <div class="story-box">
