@@ -24,3 +24,83 @@ body {
   min-height: 100vh;
 
 }
+
+
+.sidebar {
+
+  width: 320px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #1b1b1b,
+      #111
+    );
+
+  border-right: 2px solid #333;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+  box-shadow:
+    0 0 20px rgba(0,0,0,0.6);
+
+}
+
+.sidebar h1 {
+
+  margin-top: 0;
+
+  color: #ffb347;
+
+  text-align: center;
+
+  font-size: 38px;
+
+  letter-spacing: 2px;
+
+  text-shadow:
+    0 0 12px rgba(255,180,0,0.5);
+
+}
+
+.hero-header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-top: 30px;
+
+}
+
+.hero-header h2 {
+
+  margin: 0;
+
+  color: #ffd27f;
+
+}
+
+.godmode-switch {
+
+  position: relative;
+
+  width: 54px;
+
+  height: 28px;
+
+}
+
+.godmode-switch input {
+
+  opacity: 0;
+
+  width: 0;
+
+  height: 0;
+
+}
