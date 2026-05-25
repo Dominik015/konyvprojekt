@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tűzhegy Kaland</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="main-content">
+
+    <div class="story-box">
+
+      <div id="storyText"></div>
+
+    </div>
+
+    <div id="combatPanel" class="combat-panel hidden">
+
+      <h2>Harc</h2>
+
+      <div class="enemy-box">
+
+        <p>
+          Ellenfél:
+          <strong id="enemyName"></strong>
+        </p>
+
+        <p>
+          Ügyesség:
+          <span id="enemySkill"></span>
+        </p>
+
+        <p>
+          Életerő:
+          <span id="enemyHealth"></span>
+        </p>
+
+      </div>
+
+      <button id="attackBtn">
+        Támadás
+      </button>
+
+      <pre id="combatLog"></pre>
+
+    </div>
+
+    <div id="choices" class="choices"></div>
+
+  </main>
+
+</div>
+
+<script src="game.js"></script>
+
+</body>
+</html>
