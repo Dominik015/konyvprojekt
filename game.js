@@ -20,3 +20,30 @@ const player = {
   ]
 
 };
+
+let godMode = false;
+
+const gameState = {
+
+  currentSection: 1,
+
+  currentEnemy: null,
+
+  winSection: null,
+
+  events: {
+
+    foundCampGold: false,
+    foundMagicSword: false,
+    foundBronzeKey: false,
+    healedCrystal: false,
+    foundSilverRing: false,
+    drankPotion: false,
+    foundTorchGem: false,
+    foundCrown: false,
+    fedPrisoner: false,
+    openedVault: false
+
+  }
+
+};
