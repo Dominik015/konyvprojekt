@@ -156,3 +156,71 @@ choices: [
 { text: "Továbbmész", next: 8 }
 ]
 },
+
+7: {
+text: `
+Ahogy megérinted, a kard hidegsége egy pillanatra végigfut a karodon, majd hirtelen melegség váltja fel.
+
+Mintha valami ősi erő ébredne benne.
+
+Nem csak egy fegyver – inkább egy döntés, ami rád lett bízva.
+`,
+onEnter: () => {
+
+if(!gameState.events.foundMagicSword){
+
+player.skill += 1;
+player.inventory.push("Varázskard");
+gameState.events.foundMagicSword = true;
+
+updateStats();
+updateInventory();
+
+appendStory(`A varázskard ereje eggyé válik veled. Ügyességed +1!`);
+}
+
+},
+choices: [
+{ text: "Tovább", next: 8 }
+]
+},
+
+8: {
+text: `
+A folyosó hirtelen elcsendesedik.
+
+A sötétből lassú, nehéz léptek közelednek.
+
+Egy HATALMAS OGRE lép elő, mintha maga a hegy szülte volna dühből és kőből.
+
+A föld megremeg minden mozdulatára.
+`,
+enemy: {
+name: "Ogre",
+skill: 8,
+health: 20
+},
+win: 9
+},
+
+9: {
+text: `
+Az Ogre végül térdre rogy, majd összecsuklik, mintha a saját súlya is túl sok lenne neki.
+
+A csend most már természetellenesen üres.
+
+A zsákmányai között egy bronzkulcs csillan meg.
+`,
+onEnter: () => {
+
+if(!gameState.events.foundBronzeKey){
+player.inventory.push("Bronzkulcs");
+gameState.events.foundBronzeKey = true;
+updateInventory();
+}
+
+},
+choices: [
+{ text: "Továbbmész", next: 10 }
+]
+},
