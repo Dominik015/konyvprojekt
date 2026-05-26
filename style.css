@@ -104,3 +104,216 @@ body {
   height: 0;
 
 }
+
+.slider {
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: #444;
+
+  border-radius: 30px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+
+}
+
+.slider:before {
+
+  position: absolute;
+
+  content: "";
+
+  width: 22px;
+  height: 22px;
+
+  left: 3px;
+  bottom: 3px;
+
+  background: white;
+
+  border-radius: 50%;
+
+  transition: 0.3s;
+
+}
+
+input:checked + .slider {
+
+  background: #00c853;
+
+  box-shadow:
+    0 0 10px rgba(0,255,100,0.5);
+
+}
+
+input:checked + .slider:before {
+
+  transform: translateX(26px);
+
+}
+
+.godmode-text {
+
+  margin-top: 10px;
+
+  color: #aaa;
+
+  font-size: 14px;
+
+}
+
+
+.stat {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  margin: 14px 0;
+
+  padding-bottom: 6px;
+
+  border-bottom: 1px solid #2a2a2a;
+
+}
+
+.stat span {
+
+  color: #ccc;
+
+}
+
+.stat strong {
+
+  color: #fff;
+
+}
+
+
+.health-bar {
+
+  width: 100%;
+
+  height: 22px;
+
+  background: #2a2a2a;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  margin-top: 10px;
+
+  margin-bottom: 20px;
+
+  border: 1px solid #444;
+
+}
+
+.health-fill {
+
+  width: 100%;
+
+  height: 100%;
+
+  background:
+    linear-gradient(
+      to right,
+      #b30000,
+      #ff3d3d
+    );
+
+  transition: width 0.3s;
+
+}
+
+.sidebar h3 {
+
+  margin-top: 30px;
+
+  color: #ffd27f;
+
+}
+
+#inventory {
+
+  padding-left: 18px;
+
+}
+
+#inventory li {
+
+  margin-bottom: 8px;
+
+  color: #ddd;
+
+}
+
+
+.controls button,
+.choices button,
+#attackBtn {
+
+  width: 100%;
+
+  margin-top: 12px;
+
+  padding: 12px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #533519,
+      #ac5d25
+    );
+
+  border: 1px solid #666;
+
+  color: white;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-size: 15px;
+
+  transition: 0.2s;
+
+}
+
+.controls button:hover,
+.choices button:hover,
+#attackBtn:hover {
+
+  background:
+    linear-gradient(
+      to bottom,
+      #666,
+      #333
+    );
+
+  transform: scale(1.02);
+
+}
+
+.main-content {
+
+  flex: 1;
+
+  padding: 40px;
+
+  background:
+    radial-gradient(
+      circle at top,
+      #1a1a1a,
+      #0d0d0d
+    );
+
+}
