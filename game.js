@@ -107,3 +107,52 @@ choices: [
 { text: "Belépsz a barlangba", next: 2 }
 ]
 },
+//bal útvonal
+4: {
+text: `
+A bal oldali járat szűkebb, és a levegőben valami állati, rothadó szag terjeng.
+
+A sötétség nem teljesen üres – mozog.
+
+Egy pillanat alatt egy ORK tör elő a fal mellől, vad üvöltéssel, mintha már régóta várta volna, hogy valaki erre járjon.
+
+A harc elkerülhetetlen.
+`,
+enemy: {
+name: "Ork",
+skill: 6,
+health: 12
+},
+win: 5
+},
+
+5: {
+text: `
+Az Ork utolsó hörgése lassan elhal a folyosóban.
+
+A csend most még nehezebb, mint a küzdelem előtti pillanatok.
+
+A tested emlékeztet rá, hogy az út nem lesz könnyű – gyorsan falatozol valamit, hogy visszanyerd az erődet.
+
+A folyosó végén egy masszív, repedezett faajtó áll, mintha évszázadok óta őrizne valamit.
+`,
+choices: [
+{ text: "Kinyitod az ajtót", next: 6 }
+]
+},
+
+6: {
+text: `
+A faajtó nehézkesen enged, mintha ellenállna.
+
+Odabent egy elhagyott fegyverterem tárul fel, tele rozsdás páncélokkal és törött fegyverekkel.
+
+A sarokban azonban valami nem illik a képbe: egy kard, amely mintha még mindig „élne”.
+
+Gyengén pulzáló fényt bocsát ki.
+`,
+choices: [
+{ text: "Felveszed a kardot", next: 7 },
+{ text: "Továbbmész", next: 8 }
+]
+},
