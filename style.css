@@ -317,3 +317,131 @@ input:checked + .slider:before {
     );
 
 }
+
+.story-box {
+
+  background:
+    linear-gradient(
+      to bottom,
+      #222,
+      #161616
+    );
+
+  border: 1px solid #444;
+
+  border-radius: 12px;
+
+  padding: 30px;
+
+  min-height: 320px;
+
+  line-height: 1.9;
+
+  font-size: 18px;
+
+  box-shadow:
+    0 0 18px rgba(0,0,0,0.5);
+
+  white-space: pre-line;
+
+}
+
+.combat-panel {
+
+  margin-top: 25px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #2b1b1b,
+      #1b1111
+    );
+
+  border: 1px solid #5a2a2a;
+
+  border-radius: 12px;
+
+  padding: 25px;
+
+  box-shadow:
+    0 0 18px rgba(120,0,0,0.3);
+
+}
+
+.combat-panel h2 {
+
+  margin-top: 0;
+
+  color: #ff8080;
+
+}
+
+.enemy-box {
+
+  margin-bottom: 20px;
+
+  line-height: 1.7;
+
+}
+
+.hidden {
+
+  display: none;
+
+}
+
+#combatLog {
+
+  background: black;
+
+  color: #00ff90;
+
+  border-radius: 10px;
+
+  padding: 16px;
+
+  margin-top: 20px;
+
+  min-height: 120px;
+
+  white-space: pre-wrap;
+
+  border: 1px solid #333;
+
+  font-family: Consolas, monospace;
+
+}
+
+
+.choices {
+
+  margin-top: 25px;
+
+}
+
+
+@media (max-width: 900px) {
+
+  .game-container {
+
+    flex-direction: column;
+
+  }
+
+  .sidebar {
+
+    width: 100%;
+
+    border-right: none;
+
+    border-bottom: 2px solid #333;
+
+  }
+
+  .main-content {
+
+    padding: 20px;
+
+  }
+
+}
