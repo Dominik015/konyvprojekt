@@ -558,3 +558,97 @@ choices: [
 { text: "Belépsz", next: 47 }
 ]
 },
+47: {
+text: `
+Egy fekete, lebegő gömb forog előtted.
+
+A tér mintha meghajlana körülötte.
+
+A döntésed itt válik véglegessé.
+`,
+choices: [
+{ text: "Elpusztítod", next: 48 },
+{ text: "Megérinted", next: 49 }
+]
+},
+
+48: {
+text: `
+A gömb széthasad, és a sötétség összeomlik.
+
+A Tűzhegy története lezárul.
+`,
+choices: [
+{ text: "Újrakezdés", next: 1 }
+]
+},
+
+49: {
+text: `
+Ahogy megérinted a gömböt, a világ megremeg.
+
+A tested lassan kővé válik.
+
+Nem érzel fájdalmat. Csak csendet.
+
+A Tűzhegy örökre elnyel.
+`,
+choices: [
+{ text: "Vége", next: 1 }
+]
+}
+
+};
+
+function appendStory(text){
+
+document.getElementById("storyText").innerHTML += `
+<br><br>${text}
+`;
+
+}
+
+function consumeFood(){
+
+player.food--;
+
+if(player.food < 0){
+player.food = 0;
+}
+
+updateStats();
+
+if(player.food <= 0){
+
+alert("Elfogyott az élelmed.");
+
+location.reload();
+
+}
+
+}
+
+function rollDice(count = 2){
+
+let total = 0;
+
+for(let i=0;i<count;i++){
+
+total += Math.floor(Math.random()*6)+1;
+
+}
+
+return total;
+
+}
+
+function createCharacter(){
+
+player.skill = rollDice(1)+6;
+player.luck = rollDice(1)+6;
+player.health = player.maxHealth;
+
+updateStats();
+updateInventory();
+
+}
