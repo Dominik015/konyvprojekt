@@ -224,3 +224,111 @@ choices: [
 { text: "Továbbmész", next: 10 }
 ]
 },
+10: {
+text: `
+A fal mögött egy rejtett nyílást találsz, amelyet korábban teljesen észrevehetetlenül rejtett el a kő.
+
+A levegő innen hidegebb, és mintha mélyebb lenne a föld alatt a sötétség.
+`,
+choices: [
+{ text: "Lemész", next: 11 }
+]
+},
+
+11: {
+text: `
+Lépésről lépésre ereszkedsz le egy hatalmas, lávafényben pulzáló csarnokba.
+
+A falak vörösen izzanak, mintha a föld maga is élne.
+
+És a csarnok nem üres.
+`,
+enemy: {
+name: "Csontváz Harcosok",
+skill: 9,
+health: 22
+},
+win: 12
+},
+
+12: {
+text: `
+A csontvázak széthullanak, mintha csak porból lettek volna összerakva.
+
+A levegő azonban még mindig tele van velük – az emlékükkel.
+`,
+choices: [
+{ text: "Belépsz tovább", next: 13 }
+]
+},
+
+13: {
+text: `
+A sötétség sűrűbbé válik.
+
+Valami nem csontból és nem húsból lép elő – hanem magából az árnyékból.
+
+És figyel téged.
+`,
+enemy: {
+name: "Árnydémon",
+skill: 11,
+health: 26
+},
+win: 14
+},
+
+14: {
+text: `
+Az Árnydémon sikoltása elhal, majd teljesen feloldódik a sötétségben.
+
+Mintha soha nem is létezett volna.
+
+De te tudod, hogy ez nem igaz.
+`,
+choices: [
+{ text: "Tovább", next: 15 }
+]
+},
+
+15: {
+text: `
+Előtted egy hatalmas aranyajtó áll.
+
+Nem egyszerű kapu – inkább határ két világ között.
+
+Mögötte valami vár.
+`,
+choices: [
+{ text: "Belépsz", next: 16 }
+]
+},
+
+16: {
+text: `
+A terem közepén Zagor lassan felemelkedik.
+
+A levegő megváltozik körülötte – mintha a valóság is bizonytalanabbá válna.
+
+A végső próba elkezdődik.
+`,
+enemy: {
+name: "Zagor",
+skill: 13,
+health: 35
+},
+win: 17
+},
+
+17: {
+text: `
+A varázsló utolsó kiáltása visszhangzik a hegy belsejében, majd minden elcsendesedik.
+
+A Tűzhegy többé nem ugyanaz.
+
+És talán te sem.
+`,
+choices: [
+{ text: "Újrakezdés", next: 1 }
+]
+},
