@@ -523,3 +523,38 @@ choices: [
 { text: "Tovább", next: 44 }
 ]
 },
+44: {
+text: `
+Egy rejtett lépcső vezet még mélyebbre.
+
+A levegő hidegebb, mintha a világ vége közeledne.
+`,
+choices: [
+{ text: "Lemész", next: 45 }
+]
+},
+
+45: {
+text: `
+A föld megremeg, és egy hatalmas Minotaurusz tör elő a sötétségből.
+
+A dühe megelőzi a támadását.
+`,
+enemy: {
+name: "Minotaurusz",
+skill: 12,
+health: 32
+},
+win: 46
+},
+
+46: {
+text: `
+A Minotaurusz lassan összeomlik, és a földre zuhan.
+
+A barlang ismét csendes.
+`,
+choices: [
+{ text: "Belépsz", next: 47 }
+]
+},
