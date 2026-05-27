@@ -332,3 +332,194 @@ choices: [
 { text: "Újrakezdés", next: 1 }
 ]
 },
+//jobb útvonal
+30: {
+text: `
+Egy elhagyatott tábor maradványaira bukkansz.
+
+A tűzhely már rég kihűlt, de a jelenlét még mindig ott van – mintha valaki csak nemrég távozott volna.
+
+Vagy talán soha nem is ment el teljesen.
+`,
+onEnter: () => {
+
+if(!gameState.events.foundCampGold){
+player.gold += 8;
+gameState.events.foundCampGold = true;
+updateStats();
+appendStory(`A hamu között 8 aranyat találsz.`);
+}
+
+},
+choices: [
+{ text: "Továbbmész", next: 31 }
+]
+},
+
+31: {
+text: `
+Egy mély szakadékhoz érsz, amelyen egy ősi, ingatag híd vezet át.
+
+A mélységből hideg levegő áramlik fel, mintha lélegezne.
+`,
+choices: [
+{ text: "Átmész", next: 32 }
+]
+},
+
+32: {
+text: `
+A híd minden lépésnél nyikorog és remeg.
+
+A fa alattad öreg, de még tart.
+
+Valahol a mélyben víz csobog – vagy valami más.
+`,
+choices: [
+{ text: "Tovább", next: 33 }
+]
+},
+
+33: {
+text: `
+A fahíd elkezd repedni, mintha a súlyod alatt adná meg magát.
+
+Gyorsan át kell érned a túloldalra, mielőtt teljesen összeomlik.
+
+Fuss!
+`,
+choices: [
+{ text: "Átfutás", next: 34 },
+]
+},
+
+34: {
+text: `
+Sikeresen átérsz a hídon, de az utolsó lépésnél a fa ropogva adja meg magát, és egy nagy darab leszakad mögötted.
+
+Nincsen visszaút. Csak előre.
+`,
+choices: [
+{ text: "Tovább", next: 35 }
+]
+},
+
+35: {
+text: `
+Egy fekete páncélba zárt lovag áll előtted.
+
+A páncélja matt, mintha elnyelné a fényt.
+
+Nem támad azonnal. Csak figyel.
+
+Aztán felemeli a fegyverét.
+`,
+enemy: {
+name: "Fekete Lovag",
+skill: 10,
+health: 24
+},
+win: 36
+},
+
+
+36: {
+text: `
+A fekete lovag összeomlik, páncélja üresen cseng a köveken.
+
+A csend hirtelen túl tiszta.
+
+A holttest mögött egy halványan pulzáló zöld kristály jelenik meg.
+`,
+choices: [
+{ text: "Megérinted a kristályt", next: 37 },
+{ text: "Továbbmész", next: 40 }
+]
+},
+
+37: {
+text: `
+A kristály meleg fényt áraszt, és az erő visszatér a testedbe.
+`,
+onEnter: () => {
+
+if(!gameState.events.healedCrystal){
+
+player.health += 5;
+if(player.health > player.maxHealth){
+player.health = player.maxHealth;
+}
+
+gameState.events.healedCrystal = true;
+updateStats();
+
+appendStory("+5 életerő");
+}
+},
+choices: [
+{ text: "Tovább", next: 40 }
+]
+},
+
+40: {
+text: `
+Egy elfeledett könyvtárba érkezel, ahol a könyvek pora évszázadok óta érintetlen.
+
+A tudás itt nem halott – csak vár.
+`,
+choices: [
+{ text: "Tovább", next: 41 }
+]
+},
+
+41: {
+text: `
+Egy sötét cella mögött egy fogoly láncai csörrennek.
+
+A szemei reményt mutatnak.
+
+„Segíts rajtam… és elmondom Zagor gyengeségét.”
+
+„Éhezem...”
+`,
+choices: [
+{ text: "Elengeded", next: 42 },
+{ text: "Eteted (-1 élelem, infó)", next: 43 },
+{ text: "Otthagyod", next: 44 }
+]
+},
+
+42: {
+text: `
+Kiszabadítod, de nem kapsz semmit cserébe.
+
+A fogoly eltűnik a sötétben.
+`,
+choices: [
+{ text: "Tovább", next: 44 }
+]
+},
+
+43: {
+text: `
+A fogoly mohón eszik, majd rád néz.
+
+„Zagor nem bírja a tiszta fényt… a kristályok gyengítik őt.”
+
+Aztán eltűnik.
+`,
+onEnter: () => {
+
+if(!gameState.events.prisonerHelped){
+
+player.food -= 1;
+if(player.food < 0) player.food = 0;
+
+gameState.events.prisonerHelped = true;
+updateStats();
+}
+},
+choices: [
+{ text: "Tovább", next: 44 }
+]
+},
