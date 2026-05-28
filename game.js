@@ -652,3 +652,95 @@ updateStats();
 updateInventory();
 
 }
+function updateStats(){
+
+document.getElementById("skill").textContent =
+player.skill;
+
+document.getElementById("health").textContent =
+`${player.health} / ${player.maxHealth}`;
+
+document.getElementById("luck").textContent =
+player.luck;
+
+document.getElementById("gold").textContent =
+player.gold;
+
+document.getElementById("food").textContent =
+player.food;
+
+const percent =
+(player.health / player.maxHealth) * 100;
+
+document.getElementById("healthFill").style.width =
+percent + "%";
+
+}
+
+function updateInventory(){
+
+const inventory =
+document.getElementById("inventory");
+
+inventory.innerHTML = "";
+
+player.inventory.forEach(item => {
+
+const li = document.createElement("li");
+
+li.textContent = item;
+
+inventory.appendChild(li);
+
+});
+
+}
+
+const godModeToggle =
+document.getElementById("godModeToggle");
+
+const godModeStatus =
+document.getElementById("godModeStatus");
+
+godModeToggle.addEventListener("change", () => {
+
+godMode = godModeToggle.checked;
+
+godModeStatus.textContent =
+godMode ? "God Mode: BE" : "God Mode: KI";
+
+});
+
+function showSection(id){
+
+gameState.currentSection = id;
+
+const section = sections[id];
+
+document.getElementById("storyText").innerHTML =
+section.text;
+
+const choices =
+document.getElementById("choices");
+
+choices.innerHTML = "";
+
+document.getElementById("combatPanel")
+.classList.add("hidden");
+
+if(section.onEnter){
+section.onEnter();
+}
+
+if(section.enemy){
+
+//harc elmentése
+if(
+gameState.currentEnemy &&
+gameState.currentSection === id
+){
+
+startCombat(
+gameState.currentEnemy,
+gameState.winSection
+);
