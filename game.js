@@ -107,6 +107,7 @@ choices: [
 { text: "Belépsz a barlangba", next: 2 }
 ]
 },
+
 //bal útvonal
 4: {
 text: `
@@ -224,6 +225,7 @@ choices: [
 { text: "Továbbmész", next: 10 }
 ]
 },
+
 10: {
 text: `
 A fal mögött egy rejtett nyílást találsz, amelyet korábban teljesen észrevehetetlenül rejtett el a kő.
@@ -332,6 +334,7 @@ choices: [
 { text: "Újrakezdés", next: 1 }
 ]
 },
+
 //jobb útvonal
 30: {
 text: `
@@ -523,6 +526,7 @@ choices: [
 { text: "Tovább", next: 44 }
 ]
 },
+
 44: {
 text: `
 Egy rejtett lépcső vezet még mélyebbre.
@@ -558,6 +562,7 @@ choices: [
 { text: "Belépsz", next: 47 }
 ]
 },
+
 47: {
 text: `
 Egy fekete, lebegő gömb forog előtted.
@@ -652,6 +657,7 @@ updateStats();
 updateInventory();
 
 }
+
 function updateStats(){
 
 document.getElementById("skill").textContent =
@@ -744,3 +750,257 @@ startCombat(
 gameState.currentEnemy,
 gameState.winSection
 );
+
+}
+
+else{
+
+startCombat(
+section.enemy,
+section.win
+);
+
+}
+
+return;
+
+}
+
+section.choices.forEach(choice => {
+
+const button = document.createElement("button");
+
+button.textContent = choice.text;
+
+button.onclick = () => {
+showSection(choice.next);
+};
+
+choices.appendChild(button);
+
+});
+
+}
+
+//harc
+function startCombat(enemyData, winNext){
+
+currentEnemy = {
+...enemyData
+};
+
+winSection = winNext;
+
+
+gameState.currentEnemy = currentEnemy;
+gameState.winSection = winSection;
+
+document.getElementById("combatPanel")
+.classList.remove("hidden");
+
+document.getElementById("enemyName")
+.textContent = currentEnemy.name;
+
+document.getElementById("enemySkill")
+.textContent = currentEnemy.skill;
+
+document.getElementById("enemyHealth")
+.textContent = currentEnemy.health;
+
+document.getElementById("choices").innerHTML = "";
+
+document.getElementById("combatLog").textContent =
+`${currentEnemy.name} rád támad!`;
+
+}
+
+document.getElementById("attackBtn")
+.addEventListener("click", () => {
+
+if(!currentEnemy) return;
+
+const playerRoll =
+rollDice(2) + player.skill;
+
+const enemyRoll =
+rollDice(2) + currentEnemy.skill;
+
+let log = "";
+
+log += `Te: ${playerRoll}\n`;
+log += `${currentEnemy.name}: ${enemyRoll}\n\n`;
+
+if(playerRoll > enemyRoll){
+
+const damage =
+playerRoll - enemyRoll;
+
+currentEnemy.health -= damage;
+
+log +=
+`Megsebzed az ellenfelet (${damage} sebzés)!`;
+
+}
+
+else if(enemyRoll > playerRoll){
+
+const damage =
+enemyRoll - playerRoll;
+
+if(!godMode){
+
+player.health -= damage;
+
+log +=
+`${currentEnemy.name} megsebez (${damage} sebzés)!`;
+
+}
+
+else{
+
+log +=
+`A God Mode megvédett minden sebzéstől!`;
+
+}
+
+}
+
+else{
+
+log +=
+"A támadások kivédik egymást!";
+
+}
+
+//combat
+gameState.currentEnemy = currentEnemy;
+
+updateStats();
+
+document.getElementById("enemyHealth")
+.textContent = currentEnemy.health;
+
+if(player.health <= 0){
+
+log += "\n\nMEGHALTÁL.";
+
+document.getElementById("combatLog")
+.textContent = log;
+
+setTimeout(() => {
+
+alert("Vége a kalandnak!");
+
+location.reload();
+
+}, 2000);
+
+return;
+}
+
+if(currentEnemy.health <= 0){
+
+consumeFood();
+
+log +=
+`\n\nLegyőzted: ${currentEnemy.name}`;
+
+document.getElementById("combatLog")
+.textContent = log;
+
+currentEnemy = null;
+
+gameState.currentEnemy = null;
+
+setTimeout(() => {
+
+showSection(winSection);
+
+}, 1800);
+
+return;
+}
+
+document.getElementById("combatLog")
+.textContent = log;
+
+});
+
+//mentés
+document.getElementById("saveBtn")
+.addEventListener("click", () => {
+
+const saveData = {
+
+player: JSON.parse(JSON.stringify(player)),
+
+gameState: JSON.parse(JSON.stringify(gameState)),
+
+godMode
+
+};
+
+localStorage.setItem(
+"tuzhegy-save",
+JSON.stringify(saveData)
+);
+
+alert("Játék elmentve!");
+
+});
+
+//betöltés
+document.getElementById("loadBtn")
+.addEventListener("click", () => {
+
+const data =
+localStorage.getItem("tuzhegy-save");
+
+if(!data){
+
+alert("Nincs mentés!");
+
+return;
+
+}
+
+const save = JSON.parse(data);
+
+
+Object.assign(player, save.player);
+
+
+Object.assign(gameState, save.gameState);
+
+//god mode
+godMode = save.godMode || false;
+
+godModeToggle.checked = godMode;
+
+godModeStatus.textContent =
+godMode ? "God Mode: BE" : "God Mode: KI";
+
+//statok
+updateStats();
+
+updateInventory();
+
+//visszatöltés
+showSection(gameState.currentSection);
+
+alert("Mentés betöltve!");
+
+});
+
+// újrakezdés
+document.getElementById("restartBtn")
+.addEventListener("click", () => {
+
+location.reload();
+
+});
+
+//indítás
+createCharacter();
+
+showSection(1);
